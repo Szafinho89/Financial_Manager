@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet</title>
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Montserrat:200,400,500,700&display=swap&subset=latin-ext"
+    rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7684054005.js" crossorigin="anonymous"></script>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="header">
+        <h1><i class="fa-solid fa-wallet"></i>Wallet</h1>
+        <p>Twój osobisty menedżer finansów.</p>
+    </div>
+
+    <div class="containers">
+
+        <div class="left-section">
+            <h2>Lista transakcji</h2>
+            <div class="transactions-list">
+                <div class="income">
+                    <h3>Przychód:</h3>
+                    <ul>
+                        <li><span><i class="fa-solid fa-money-bill-1-wave"></i> Wypłata</span>
+                            <span> 2500 zł<i class="fa-solid fa-xmark"></i></span>
+                            
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="costs">
+                    <h3>Wydatki:</h3>
+                    <ul>
+                        <li><span><i class="fa-sharp fa-solid fa-cart-shopping"></i> Pralka</span>
+                            <span> 2500 zł<i class="fa-solid fa-xmark"></i></span>
+                        </li>
+                        <li><span><i class="fa-solid fa-utensils"></i> Schabowy</span>
+                            <span> 50 zł<i class="fa-solid fa-xmark"></i></span>
+                        </li>
+
+
+                        
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="control-panel">
+            <h2>Dostępne środki</h2>
+            <p class="available-funds">1950 zł</p>
+            <div class="buttons-panel">
+                <button class="add-transaction"><i class="fa-regular fa-plus"></i>Dodaj transakcję</button>
+                <button class="remove-all"><i class="fa-regular fa-trash-can"></i>Usuń wszystko</button>
+            </div>
+            <h2>Wybierz styl:</h2>
+            <div class="colors-panel">
+                <div class="white"></div>
+                <div class="black"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="add-transaction-panel">
+        <h2 class="title">Dodaj nową transakcję</h2>
+
+        <label for="name">Nazwa:</label>
+        <small>(podaj nazwę transakcji)</small>
+        <input type="text" id="name">
+
+        <label for="amount">Kwota:</label>
+        <small>(podaj kwotę transakcji, jeśli dodajesz wydatek, postaw znak minusa na początku kwoty)</small>
+        <input type="number" id="amount">
+
+        <label for="category">Wybierz kategorię:</label>
+        <small>([+] oznacza przychód, [-] oznacza wydatek)</small>
+        <select id="category">
+            <option value="none" disabled selected>- wybierz kategorię -</option>
+            <option value="income">[ + ] Przychód</option>
+            <option value="shopping">[ - ] Zakupy</option>
+            <option value="food">[ - ] Jedzenie</option>
+            <option value="cinema">[ - ] Kino</option>
+        </select>
+
+        <div class="add-transaction-buttons">
+            <button class="save"><i class="fa-solid fa-floppy-disk"></i> Zapisz</button>
+            <button class="cancel"><i class="fa-solid fa-rectangle-xmark"></i> Anuluj</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
