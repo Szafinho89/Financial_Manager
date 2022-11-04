@@ -126,19 +126,14 @@ const deleteTransFromIncome = (id) => {
 const removeAll = () => {
     income.innerHTML = '<h3>Przychód:</h3>'
     costs.innerHTML = '<h3>Wydatki:</h3>'
-    moneyArray = [0]
+    moneyArray = []
     countMoney()
-
-
 }
-
 
 cancelBtn.addEventListener('click', closeAddPanel)
 addBtn.addEventListener('click', showAddPanel)
 saveBtn.addEventListener('click', checkForm)
 removeAllBtn.addEventListener('click', removeAll)
-
-
 
 // zmiana kolorów
 whiteBtn.addEventListener('click', () => {
@@ -152,12 +147,3 @@ blackBtn.addEventListener('click', () => {
     root.style.setProperty('--second-color', 'white')
     root.style.setProperty('--border-color', 'white')
 })
-
-// var arr = [1, 2, 3];
-// arr.splice(0, 1);
-// console.log(arr)
-// [2, 3]
-
-// var arr = [3, 4, 6];
-// console.log(arr.splice(2, 1))
-// [6]
