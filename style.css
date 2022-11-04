@@ -5,9 +5,15 @@
 }
 
 :root {
-    --first-color: white;
+    /* --first-color: white;
     --second-color: black;
-    --border-color: black;
+    --border-color: black; */
+
+    /* zmienic to na koniec projektu z tym do góry */
+    --first-color: black;
+    --second-color: white;
+    --border-color: white;
+
 
 }
 
@@ -40,8 +46,16 @@ body {
 }
 
 .left-section {
-    width: 950px;
+    width:1000px;
     margin: 15px;
+}
+
+.transactions-list {
+    display: flex;
+    /* justify-content: space-between; */
+    /* margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px; */
 }
 
 .income h3 {
@@ -59,6 +73,7 @@ body {
     text-transform: uppercase;
     font-weight: 400;
     font-size: 30px;
+    margin-bottom: 20px;
 }
 
 .control-panel h2 {
@@ -66,18 +81,11 @@ body {
     margin-bottom: 20px;
 }
 
-.transactions-list {
-    display: flex;
-    justify-content: space-between;
-    width: 950px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
-}
+
 
 .control-panel {
-    border: 1px solid var(--second-color);
-    min-width: 450px;
+    border: 1px solid var(--border-color);
+    width: 450px;
     margin: 15px;
 
 }
@@ -91,8 +99,10 @@ body {
 
 .income,
 .costs {
-    width: 450px;
-    border: 1px solid var(--second-color);
+    margin: 0 20px;
+    padding: 30px 10px 10px 10px;
+    width: 50%;
+    border: 1px solid var(--border-color);
 }
 
 .transactions-list h3 {
@@ -101,31 +111,37 @@ body {
     font-size: 26px;
 }
 
-.transactions-list span {
-    display: flex;
-    padding-right: 15px;
-    align-items: center;
-}
-
-.left-section li {
+.left-section .item {
     display: flex;
     list-style: none;
-    padding-left: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-bottom: 8px;
     justify-content: space-between;
     margin-bottom: 15px;
-
+    border-bottom: 1px solid var(--border-color);
 }
 
+.left-section .item:last-child {
+    border-bottom: none;
+}
+
+
+
 .fa-xmark {
-    margin-left: 10px;
-    padding-left: 5px;
+    margin-left: 20px;
+    /* padding: 15px; */
     font-size: 20px;
+    cursor: pointer;
+    color: var(--second-color);
 }
 
 .fa-money-bill-1-wave,
 .fa-cart-shopping,
-.fa-utensils {
-    padding-right: 10px;
+.fa-utensils,
+.fa-film {
+    width: 18px;
+    height: 18px;
 }
 
 .fa-trash-can,
@@ -147,7 +163,7 @@ body {
     height: 38px;
     cursor: pointer;
     border-radius: 5px;
-    border: 1px solid var(--second-color);
+    border: 1px solid var(--border-color);
     background: none;
     color: var(--second-color)
 }
@@ -163,7 +179,7 @@ body {
 .black {
     width: 45px;
     height: 45px;
-    border: 1px solid var(--second-color);
+    border: 1px solid var(--border-color);
     border-radius: 50px;
     margin: 15px 20px 60px 20px;
 }
@@ -217,32 +233,23 @@ body {
 .add-transaction-panel label {
     margin-top: 40px;
     font-size: 28px;
-
 }
 
 .add-transaction-panel small {
     font-size: 14px;
     margin-top: 3px;
     margin-bottom: 8px;
+    font-style: italic;
 }
 
-.add-transaction-panel input {
-    width: 800px;
-    height: 45px;
-    border-radius: 8px;
-    border: 1px solid var(--second-color);
-    font-size: 20px;
-
-}
-
+.add-transaction-panel input,
 .add-transaction-panel select {
     width: 800px;
     height: 45px;
-    text-align: center;
     border-radius: 8px;
-    border: 1px solid var(--second-color);
+    border: 1px solid var(--border-color);
     font-size: 20px;
-    cursor: pointer;
+    padding: 0 20px 0 20px;
 }
 
 .add-transaction-panel button {
@@ -253,7 +260,7 @@ body {
     font-size: 20px;
     border-radius: 8px;
     background: none;
-    border: 1px solid var(--first-color);
+    border: 1px solid white;
     color: white;
     margin: 25px;
     cursor: pointer;

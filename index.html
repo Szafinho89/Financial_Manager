@@ -23,29 +23,33 @@
         <div class="left-section">
             <h2>Lista transakcji</h2>
             <div class="transactions-list">
+
                 <div class="income">
                     <h3>Przychód:</h3>
-                    <ul>
-                        <li><span><i class="fa-solid fa-money-bill-1-wave"></i> Wypłata</span>
-                            <span> 2500 zł<i class="fa-solid fa-xmark"></i></span>
-                            
-                        </li>
-                    </ul>
+                    <div class="item">
+                        <p><i class="fa-solid fa-money-bill-1-wave"></i> Wypłata</p>
+                        <p style="color: green"> 2500 zł<i class="fa-solid fa-xmark"></i></p>
+                    </div>
                 </div>
 
                 <div class="costs">
                     <h3>Wydatki:</h3>
-                    <ul>
-                        <li><span><i class="fa-sharp fa-solid fa-cart-shopping"></i> Pralka</span>
-                            <span> 2500 zł<i class="fa-solid fa-xmark"></i></span>
-                        </li>
-                        <li><span><i class="fa-solid fa-utensils"></i> Schabowy</span>
-                            <span> 50 zł<i class="fa-solid fa-xmark"></i></span>
-                        </li>
 
+                    <div class="item">
+                        <p><i class="fa-sharp fa-solid fa-cart-shopping"></i> Pralka</p>
+                        <p style="color: red"> 2500 zł<i class="fa-solid fa-xmark"></i></p>
+                    </div>
 
-                        
-                    </ul>
+                    <div class="item">
+                        <p><i class="fa-solid fa-utensils"></i> Schabowy</p>
+                        <p> 50 zł<i class="fa-solid fa-xmark"></i></p>
+                    </div>
+
+                    <div class="item">
+                        <p><i class="fa-solid fa-film"></i> Top Gun</p>
+                        <p> 70 zł<i class="fa-solid fa-xmark"></i></p>
+                    </div>
+                    
                 </div>
             </div>
 
@@ -81,7 +85,7 @@
         <label for="category">Wybierz kategorię:</label>
         <small>([+] oznacza przychód, [-] oznacza wydatek)</small>
         <select id="category">
-            <option value="none" disabled selected>- wybierz kategorię -</option>
+            <option value="none" disabled selected></option>
             <option value="income">[ + ] Przychód</option>
             <option value="shopping">[ - ] Zakupy</option>
             <option value="food">[ - ] Jedzenie</option>
