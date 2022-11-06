@@ -18,15 +18,22 @@
 }
 
 body {
-    background-color: var(--first-color);
-    font-family: 'Montserrat', sans-serif;
     min-height: 100vh;
-    color: var(--second-color)
+    font-family: 'Montserrat', sans-serif;
+    color: var(--second-color);
+    background-color: var(--first-color);
+    overflow: hidden;
+    display: flow-root;
 }
 
 .header {
     text-align: center;
-    margin: 30px 0;
+    margin-top: 30px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 200px; */
 }
 
 .header h1 {
@@ -126,14 +133,17 @@ body {
     border-bottom: none;
 }
 
-
-
 .fa-xmark {
     margin-left: 20px;
     /* padding: 15px; */
     font-size: 20px;
     cursor: pointer;
     color: var(--second-color);
+    transition: transform .3s;
+}
+
+.fa-xmark:hover {
+    transform: scale(0.8)
 }
 
 .fa-money-bill-1-wave,
@@ -165,14 +175,19 @@ body {
     border-radius: 5px;
     border: 1px solid var(--border-color);
     background: none;
-    color: var(--second-color)
+    color: var(--second-color);
+    transition: background-color .8s, color .8s, border .8s;
+}
+
+.control-panel button:hover {
+    background-color: var(--second-color);
+    color: var(--first-color);
+    border: var(--second-color);
 }
 
 .colors-panel {
     display: flex;
     justify-content: center;
-    /* align-items: center; */
-
 }
 
 .white,
@@ -182,10 +197,12 @@ body {
     border: 1px solid var(--border-color);
     border-radius: 50px;
     margin: 15px 20px 60px 20px;
+    transition: transform .3s;
 }
 
 .white:hover,
 .black:hover {
+    transform: scale(0.9);
     cursor: pointer;
 }
 
@@ -205,16 +222,16 @@ body {
     flex-direction: column;
     position: absolute;
     /* ponizsze 4 wiersze zapewniaja ze popup zakryje 100% strony  */
-    /* top: 0;
+    top: 0;
     left: 0;
-    width: 100%;
-    height: 100%; */
+    width: 100vw;
+    height: 100vh;
     /* tez 5 ponizsze wiersze tez zapewniaja ze popup zakryje 100% strony wiec jeden zestaw wyłączam  */
-    top: 50%;
+    /* top: 50%;
     left: 50%;
-    height: 100%;
-    width: 100%;
-    transform: translate(-50%,-50%);
+    height: 100vmax;
+    width: 100vmax;
+    transform: translate(-50%,-50%); */
 
     color: white;
     background-image: linear-gradient(100deg, blue, gray);
@@ -253,7 +270,6 @@ body {
 }
 
 .add-transaction-panel button {
-    
     margin-top: 30px;
     width: 140px;
     height: 50px;
@@ -264,6 +280,11 @@ body {
     color: white;
     margin: 25px;
     cursor: pointer;
+    transition: background-color .5s
+}
+
+.add-transaction-panel button:hover {
+    background-color: black;
 }
 
 

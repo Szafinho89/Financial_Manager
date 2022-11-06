@@ -15,9 +15,6 @@ const income = document.querySelector('.income')
 const costs = document.querySelector('.costs')
 const deleteBtns = document.getElementsByClassName('delete-trans')
 
-let cardID = 0
-let selectedCategory;
-
 //panel dodawania
 const nameInput = document.querySelector('#name')
 const amountInput = document.querySelector('#amount')
@@ -25,13 +22,17 @@ const category = document.querySelector('#category')
 const saveBtn = document.querySelector('.save')
 const cancelBtn = document.querySelector('.cancel')
 
+let cardID = 0
+let selectedCategory;
+let moneyArray = []
+let sum = 0
 
 // zmiana kolorów:
 let root = document.documentElement;
 
-
 const closeAddPanel = () => {
     addPanel.style.display= 'none'
+    clearAddPanel()
 }
 
 const showAddPanel = () => {
@@ -90,9 +91,6 @@ const saveTransaction = () => {
         countMoney()
     }
 }
-
-let moneyArray = []
-let sum = 0
 
 const countMoney = () => {
     sum = 0
