@@ -27,6 +27,8 @@ let selectedCategory;
 let moneyArray = []
 let sum = 0
 
+let categoryIcon
+
 // zmiana kolorów:
 let root = document.documentElement;
 
@@ -37,43 +39,76 @@ const closeAddPanel = () => {
 
 const showAddPanel = () => {
     addPanel.style.display= 'flex'
+    console.log(category.value);
 }
 
 const clearAddPanel = () => {
     nameInput.value = ''
     amountInput.value = ''
-    category.value = ''
+    category.selectedIndex = 0;
+    // wczesniej uzylem tego ponizej, ale bardziej poprawnie jest uzyc tego powyzej
+    // category.value = 'none';
 }
 
 const checkForm = () => {
-    if (nameInput.value === '' || amountInput.value === '' || category.value === '') {
+    console.log(category.value);
+
+    if (nameInput.value === '' || amountInput.value === '' || category.value === 'none') {
         alert('Wypełnij wszystkie pola!')
     } else {
-        setCategory()
         saveTransaction()
         clearAddPanel()
         closeAddPanel()
     }
 }
 
+// const setCategory = () => {
+//     if (category.value.includes('income')) {
+//         selectedCategory = '<i class="fa-solid fa-money-bill-1-wave"></i>'
+//     } else if (category.value.includes('shopping')) {
+//         selectedCategory = '<i class="fa-sharp fa-solid fa-cart-shopping"></i>'
+//     } else if (category.value.includes('food')) {
+//         selectedCategory = '<i class="fa-solid fa-utensils"></i>'
+//     } else if (category.value.includes('cinema')) {
+//         selectedCategory = '<i class="fa-solid fa-film"></i>'
+//     }
+//     console.log(selectedCategory);
+// }
+
+// tu sprobowac rozwiazac temat SELECTa tak jak MAJEK - on po prostu chce dzialac na podstawie tego co jest w tresci SELECTA a nie na podstawie samego VALUE - bo ja dzialajac tylko na value w ogole nie musze sie odnosic do metody category.options[category.selectedIndex].text / value
+
+//to dziala ale jeszcze tu poprawic ze jak nie zaznacze selecta to mi ustawia automatycznei starego selecta - znalezc problem 
 const setCategory = () => {
-    if (category.value.includes('income')) {
-        selectedCategory = '<i class="fa-solid fa-money-bill-1-wave"></i>'
-    } else if (category.value.includes('shopping')) {
-        selectedCategory = '<i class="fa-sharp fa-solid fa-cart-shopping"></i>'
-    } else if (category.value.includes('food')) {
-        selectedCategory = '<i class="fa-solid fa-utensils"></i>'
-    } else if (category.value.includes('cinema')) {
-        selectedCategory = '<i class="fa-solid fa-film"></i>'
-    }
+    selectedCategory = category.options[category.selectedIndex].text
+    setCategoryIcon(selectedCategory)
 }
+
+const setCategoryIcon = (transactionType) => {
+    switch (transactionType) {
+        case '[ + ] Przychód':
+            categoryIcon = '<i class="fa-solid fa-money-bill-1-wave"></i>'
+            break;
+        case '[ - ] Zakupy':
+            categoryIcon = '<i class="fa-sharp fa-solid fa-cart-shopping"></i>'
+            break;
+        case '[ - ] Jedzenie':
+            categoryIcon = '<i class="fa-solid fa-utensils"></i>'
+            break;
+        case '[ - ] Kino':
+            categoryIcon = '<i class="fa-solid fa-film"></i>'
+            break;
+    }
+
+}
+
+
 
 const saveTransaction = () => {
     if (amountInput.value.includes('-')) {
         const newCost = document.createElement('div')
         newCost.classList.add('item')
         newCost.setAttribute('id', cardID)
-        newCost.innerHTML = `<p>${selectedCategory} ${nameInput.value}</p>
+        newCost.innerHTML = `<p>${categoryIcon} ${nameInput.value}</p>
         <p class="delete-trans" style="color: red"> ${amountInput.value} zł<i class="fa-solid fa-xmark" onclick="deleteTransFromCosts(${cardID})"></i></p>`
         costs.appendChild(newCost)
         cardID++
@@ -83,7 +118,7 @@ const saveTransaction = () => {
         const newIncome = document.createElement('div')
         newIncome.classList.add('item')
         newIncome.setAttribute('id', cardID)
-        newIncome.innerHTML = `<p>${selectedCategory} ${nameInput.value}</p>
+        newIncome.innerHTML = `<p>${categoryIcon} ${nameInput.value}</p>
         <p class="delete-trans" style="color: green"> ${amountInput.value} zł<i class="fa-solid fa-xmark" onclick="deleteTransFromIncome(${cardID})"></i></p>`
         income.appendChild(newIncome)
         cardID++
