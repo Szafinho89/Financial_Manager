@@ -25,6 +25,7 @@ const cancelBtn = document.querySelector('.cancel')
 let cardID = 0
 let selectedCategory;
 let moneyArray = []
+// wpisujemy do tablicy 0 żeby działał reduce - bo jesli go nie bedzie no to po usunieciu wszystkich elementow reduce nie bedzie mial czgo policzyc i wywali błąd.
 let sum = 0
 
 let categoryIcon
@@ -101,8 +102,6 @@ const setCategoryIcon = (transactionType) => {
 
 }
 
-
-
 const saveTransaction = () => {
     if (amountInput.value.includes('-')) {
         const newCost = document.createElement('div')
@@ -123,26 +122,32 @@ const saveTransaction = () => {
         income.appendChild(newIncome)
         cardID++
         moneyArray.push(parseFloat(amountInput.value))
+        // sprawdzam czy daloby sie wykonywac funkcje countMoney bez podawania argumentu
         countMoney()
     }
 }
 
-const countMoney = () => {
-    sum = 0
-    for (i = 0; i < moneyArray.length; i++) {
-        sum = sum + moneyArray[i]
-    }
-    console.log(sum);
-    availableMoney.textContent = `${sum} zł`
+// const countMoney = () => {
+//     sum = 0
+//     for (i = 0; i < moneyArray.length; i++) {
+//         sum = sum + moneyArray[i]
+//     }
+//     console.log(sum);
+//     availableMoney.textContent = `${sum} zł`
+//     console.log(moneyArray);
+// }
+
+const countMoney = () => { 
+    const sum2 = moneyArray.reduce((a, b) => (a + b))
     console.log(moneyArray);
+    console.log(sum2);
+    availableMoney.textContent = `${sum2} zł`
 }
-
-
-
 
 const deleteTransFromCosts = (id) => {
     const transactionToDelete = document.getElementById(id)
     console.log(transactionToDelete);
+    console.log(transactionToDelete.childNodes);
     costs.removeChild(transactionToDelete)
     moneyArray.splice(id, 1, 0)
     countMoney()
@@ -151,6 +156,7 @@ const deleteTransFromCosts = (id) => {
 const deleteTransFromIncome = (id) => {
     const transactionToDelete = document.getElementById(id)
     console.log(transactionToDelete);
+    console.log(transactionToDelete.childNodes);
     income.removeChild(transactionToDelete)
     moneyArray.splice(id, 1, 0)
     countMoney()
@@ -168,7 +174,7 @@ addBtn.addEventListener('click', showAddPanel)
 saveBtn.addEventListener('click', checkForm)
 removeAllBtn.addEventListener('click', removeAll)
 
-// zmiana kolorów
+// zmiana kolorów - ja zrobilem funkcje anonimowe a mozna bylo zrobic to wywolujac normalnie funkcje np changeToBlack i changeToDark
 whiteBtn.addEventListener('click', () => {
     root.style.setProperty('--first-color', 'white')
     root.style.setProperty('--second-color', 'black')
